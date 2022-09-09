@@ -13,7 +13,7 @@ app = Flask(__name__)  #creating a flask instance
 def weather():
     if request.method == "POST":
         city = request.form['city']
-        apiKey= "df76a9fdc4964c09b8d65926220909"
+        apiKey= "8fe6d1156da5eeada955de2c33be8cbe"
         unit = "metric"
         url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=" +apiKey+ "&units=" + unit + ""
         print(url)
