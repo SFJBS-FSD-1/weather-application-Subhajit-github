@@ -22,6 +22,7 @@ def weather():
         image_url = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
         print(response["cod"])
         if response["cod"] == 200:
+            icon = response["weather"][0]["icon"]
             data = {"icon": image_url,
                 "lon_key": response.get("coord")["lon"],
                "lat_key": response.get("coord")["lat"],
