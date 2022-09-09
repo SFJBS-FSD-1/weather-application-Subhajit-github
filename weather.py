@@ -18,11 +18,12 @@ def weather():
         url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=" +apiKey+ "&units=" + unit + ""
         print(url)
         response = requests.get(url).json()
-        icon = response["weather"][0]["icon"]
-        image_url = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
+        # icon = response["weather"][0]["icon"]
+        # image_url = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
         print(response["cod"])
         if response["cod"] == 200:
             icon = response["weather"][0]["icon"]
+            image_url = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
             data = {"icon": image_url,
                 "lon_key": response.get("coord")["lon"],
                "lat_key": response.get("coord")["lat"],
@@ -34,7 +35,7 @@ def weather():
             print(data)
             return render_template("index.html", my_name="Subhajit", data=data)
         elif response["cod"] == "404":
-            data = {"message": response["message"], "status": 404 }
+            data = {"message": "City Invalid", "status": 404 }
             return render_template("index.html", my_name="Subhajit", data=data)
         else:
             data = {"message": response["message"], "status": response["cod"]}
