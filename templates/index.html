@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>First Flask App</title>
+</head>
+<body>
+<h1>This is {{my_name}} homepage</h1>
+<form action="/" method='post'>
+    <input type="text" name="city" placeholder="city_name">
+    <button type="submit">Submit</button>
+</form>
+ {% if data.status==200 %}
+<img src="{{data['icon']}}">
+<h3>Longitude: {{data["lon_key"]}}</h3>
+<h3>Latitude: {{data["lat_key"]}}</h3>
+<h3>Temperature: {{data["temp_key"]}} &#8451</h3>
+<h3>City: {{data["city_key"]}}</h3>
+<h3>Sunrise: {{data["sunrise"]}}</h3>
+<h3>Sunset: {{data["sunset"]}}</h3>
+ {% elif data.status == 404 %}
+<h3>Message: data["message"]</h3>
+ {% else %}
+ {% endif %}
+</body>
+</html>
