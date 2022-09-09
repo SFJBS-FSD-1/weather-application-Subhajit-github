@@ -38,7 +38,7 @@ def weather():
     else:
         # data = None
         return render_template("index.html", my_name="Subhajit")
-        return render_template("index.html", my_name="Subhajit", data=data)
+        # return render_template("index.html", my_name="Subhajit", data=data)
 
 port = int(os.environ.get("PORT", 5000))
 
