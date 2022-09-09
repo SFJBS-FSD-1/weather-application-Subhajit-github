@@ -35,10 +35,12 @@ def weather():
         elif response["cod"] == "404":
             data = {"message": response["message"], "status": 404 }
             return render_template("index.html", my_name="Subhajit", data=data)
+        else:
+            return render_template("index.html", my_name="Subhajit")
+
     else:
-        # data = None
-        return render_template("index.html", my_name="Subhajit")
-        # return render_template("index.html", my_name="Subhajit", data=data)
+        data = None
+        return render_template("index.html", my_name="Subhajit", data=data)
 
 port = int(os.environ.get("PORT", 5000))
 
