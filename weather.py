@@ -36,7 +36,8 @@ def weather():
             data = {"message": response["message"], "status": 404 }
             return render_template("index.html", my_name="Subhajit", data=data)
         else:
-            return render_template("index.html", my_name="Subhajit")
+            data = {"message": response["message"], "status": response["cod"]}
+            return render_template("index.html", my_name="Subhajit", data=data)
 
     else:
         data = None
