@@ -2,25 +2,40 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>First Flask App</title>
+    <title>Weather Map Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+    h1, h3 {
+    color: #fdb232;
+    margin: 18px;
+    text-align:center;
+    }
+  </style>
 </head>
-<body>
-<h1>This is {{my_name}} homepage</h1>
-<form action="/" method='post'>
-    <input type="text" name="city" placeholder="city_name">
-    <button type="submit">Submit</button>
-</form>
- {% if data.status==200 %}
-<img src="{{data['icon']}}">
-<h3>Longitude: {{data["lon_key"]}}</h3>
-<h3>Latitude: {{data["lat_key"]}}</h3>
-<h3>Temperature: {{data["temp_key"]}} &#8451</h3>
-<h3>City: {{data["city_key"]}}</h3>
-<h3>Sunrise: {{data["sunrise"]}}</h3>
-<h3>Sunset: {{data["sunset"]}}</h3>
- {% elif data.status == 404 %}
-<h3>Message: data["message"]</h3>
- {% else %}
- {% endif %}
+<body background="https://wallpapercave.com/wp/wp2293507.jpg">
+<h1 class="display-2"> Welcome to Weather Map Home</h1>
+<div style="text-align:center;">
+    <form action="/" method='post'>
+        <div class="mt-3 px-3">
+            <input class="form-control-lg" type="text" name="city" placeholder="Enter Your City">
+            <button type="submit" class="btn btn-light btn-outline-dark btn-lg">Submit</button>
+        </div>
+    </form>
+     {% if data.status==200 %}
+        <img src="{{data['icon']}}">
+        <h3>Longitude: {{data["lon_key"]}}</h3>
+        <h3>Latitude: {{data["lat_key"]}}</h3>
+        <h3>Temperature: {{data["temp_key"]}} &#8451</h3>
+        <h3>City: {{data["city_key"]}}</h3>
+        <h3>Sunrise: {{data["sunrise"]}}</h3>
+        <h3>Sunset: {{data["sunset"]}}</h3>
+     {% elif data.status == 404 %}
+    <h3>{{data["message"]}}</h3>
+     {% else %}
+     {% endif %}
+</div>
 </body>
 </html>
